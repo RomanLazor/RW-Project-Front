@@ -1,0 +1,669 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.wrapper {
+    width: 1350px;
+    background-color: #E0DDD8;
+    margin-top: 150px; /* Відступ дорівнює висоті шапки */
+}
+
+.container {
+    width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+}
+/* header */
+header {
+    position: fixed; /* Фіксуємо шапку */
+    top: 0;
+    left: 0;
+    width: 100%; /* Розтягуємо на всю ширину */
+
+    display: flex; /* Вирівнюємо елементи в рядок */
+    justify-content: space-between; /* Розподіл простору між елементами */
+    align-items: center;
+    padding: 10px 20px; /* Внутрішні відступи */
+    z-index: 500; /* Поверх іншого контенту */
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тінь для шапки */
+}
+
+.header-left, .header-right {
+    display: flex; /* Елементи в рядок */
+    align-items: center;
+    gap: 10px; /* Проміжок між кнопками */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Темний текст */
+    padding: 5px 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.header-btn {
+    background-color: #FFFFFF;
+    padding: 9px 17px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.header-btn:hover {
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+/*content*/
+.hero {
+    background-color: #e0e0e0;
+    padding: 50px;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+.image-section {
+    background-color: #f0f0f0;
+    padding: 40px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+    text-align: left; 
+}
+
+.text {
+    max-width: 300px; 
+    font-size: 16px;
+    color: #333;
+}
+
+.image-placeholder {
+    width: 200px;
+    height: 300px;
+    background-color: #ccc;
+}
+
+.cards-section {
+    background-color: #fff4db;
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    width: 150px;
+    height: 100px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.action-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.secondary-btn {
+    padding: 10px 20px;
+    background-color: #f5dba1;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.category-section {
+    background-color: #fff4db;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 20px;   
+    align-items: flex-end; 
+  
+}
+
+.category {
+    width: 372px;
+    height: 643px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px; 
+    font-weight: bold;
+    border-radius: 35px; 
+}
+
+.search-bar {
+    text-align: right;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.hero, .image-section, .cards-section, .action-section {
+    padding: 20px;
+}
+
+/* LOG IN PAGE */
+#login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#login-page .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #008C80;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#login-page .close-btn:hover {
+    color: #006d64;
+}
+
+#login-page .wrapper {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: rgba(183, 219, 214, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+    padding: 40px;
+}
+
+#login-page .form-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#login-page .wrapper.active .form-wrapper.sign-in {
+    transform: scale(0);
+}
+
+#login-page .wrapper .form-wrapper.sign-up {
+    position: absolute;
+    top: 0;
+    transform: scale(0);
+}
+
+#login-page .wrapper.active .form-wrapper.sign-up {
+    transform: scale(1);
+}
+
+#login-page .form-wrapper h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+}
+
+#login-page .input-group {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+
+#login-page .input-group label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+#login-page .input-group input {
+    width: 320px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: 600;
+}
+
+#login-page .input-group input:focus~label,
+#login-page .input-group input:valid~label {
+    top: -5px;
+    color: #008C80;
+    font-size: 12px;
+}  
+
+#login-page .remember {
+    margin: -5px 0 15px 5px;
+}
+
+#login-page .remember label {
+    color: #fff;
+    font-size: 14px;
+}
+
+#login-page .remember label input {
+    accent-color: #008C80;
+}
+
+#login-page a {
+    color: #008C80;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#login-page a:hover {
+    color: #006d64;
+}
+
+#login-page :where(.forgot-pass) {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+#login-page button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #008C80;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+}
+
+#login-page .google-button a {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: #008C80;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+#login-page .google-button a:hover {
+    color: #008C80;
+    background-color: #fff;
+}
+
+#login-page button:hover {
+    background: #006d64;
+}
+
+#login-page .signUp-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+#login-page .signUp-link p {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Preloader */
+.preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 501;
+    transition: 1s all;
+    opacity: 1;
+    visibility: visible;
+}
+
+.loader {
+    width: 75px;
+    height: 75px;
+    border: 10px solid white;
+    border-radius: 50%;
+    border-top-color: blue ;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: 1s spin infinite linear;
+}
+
+.preloader.done{
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+} 
+
+
+.them-btn {
+    position: fixed;
+    z-index: 500;
+    right: 0;
+    top: 150px;
+    background: var(--bg-transparent-color-01);
+    backdrop-filter: blur(20px);
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.them-btn .sun,
+.them-btn.sun .moon {
+    display: none;
+}
+
+.them-btn.sun .sun {
+    display: block;
+}
+
+.hero-text {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+.hero-text h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+.hero-image {
+    flex: 1;
+    height: 200px;
+    background-color: #ddd;
+    border-radius: 10px;
+  }
+  
+.grid-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+.grid-item {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+.grid-item.large {
+    grid-column: span 2;
+    height: 150px;
+  }
+  
+/*card stacck*/
+.cards-stack-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #f4f4f4; 
+  }
+  
+.card-stack-wrapper {
+    position: relative;
+    width: 200px;
+    height: 300px; 
+  }
+  
+ 
+.card-stack {
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; 
+    background-color: #ccc; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+ 
+.card1 {
+    transform:  rotate(0deg); 
+    background-color: #e0e0e0;
+    z-index: 1;
+  }
+  
+.card2 {
+    transform: translateX(35px) rotate(10deg); 
+    background-color: #d6d6d6;
+   
+  }
+  
+.card3 {
+    transform: translateX(-35px) rotate(-10deg); 
+    background-color: #cccccc;
+    /
+  }
+  /*info blocks*/
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    background-color: #f4f4f4;
+  }
+  
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .text-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .text-lines .line {
+    height: 8px;
+    width: 300px;
+    background-color: #ddd;
+    border-radius: 4px;
+  }
+  
+  .search-box input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .info-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .large-card {
+    width: 100%;
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .small-card {
+    flex: 1;
+    height: 100px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .large-block {
+    flex: 1;
+    height: 400px;
+    width: 400;
+    background-color: #dcdcdc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-pillar-middle {
+    width: 372px;
+    height: 343px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px; 
+    font-weight: bold;
+    border-radius: 35px; 
+
+  }
+
+  /* Основні стилі для секції */
+.custom-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f5f5f5; /* Задній фон секції */
+    height: 400px;
+  }
+  
+  /* Ліва панель із лініями та кнопкою */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px; /* Відстань між елементами */
+    width: 30%;
+  }
+  
+  .line {
+    width: 80%;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+  
+  .button-placeholder {
+    width: 60%;
+    height: 40px;
+    background-color: #ffecc8;
+    border-radius: 10px;
+  }
+  
+  /* Права панель із картками */
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 65%;
+  }
+  
+  .large-card {
+    height: 60%;
+    background-color: #dfddd9;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .small-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .small-card {
+    width: 40%; /* Зменшена ширина карток */
+    height: 120px;
+    background-color: #dfddd9;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
