@@ -606,7 +606,6 @@ footer {
 
   }
 
-  /* Основні стилі для секції */
 .custom-section {
     display: flex;
     justify-content: space-between;
@@ -615,7 +614,6 @@ footer {
     height: 400px;
   }
   
-  /* Ліва панель із лініями та кнопкою */
 .left-panel {
     display: flex;
     flex-direction: column;
@@ -638,7 +636,6 @@ footer {
     border-radius: 10px;
   }
   
-  /* Права панель із картками */
   .right-panel {
     display: flex;
     flex-direction: column;
@@ -666,4 +663,123 @@ footer {
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
-  
+/*Adaptation*/
+@media (max-width: 1024px) {
+    .wrapper, .container {
+        width: 100%;
+        padding: 0 20px; 
+    }
+
+    .hero h1 {
+        font-size: 28px; 
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .image-section {
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    .image-placeholder {
+        width: 100%; 
+        height: auto;
+    }
+
+    .category-section {
+        flex-wrap: wrap; 
+        gap: 10px;
+    }
+
+    .category, .category-pillar-middle {
+        width: 100%; 
+        height: auto; 
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; 
+        padding: 10px;
+    }
+
+    .header-left, .header-right {
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .cards-section {
+        flex-direction: column; 
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px; 
+    }
+
+    .info-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info-content {
+        flex-direction: column;
+    }
+
+    .cards {
+        gap: 10px;
+    }
+
+    .small-card, .large-block {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px; 
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .search-bar input {
+        width: 90%; 
+    }
+
+    .cards-stack-section {
+        flex-direction: column;
+    }
+
+    .card-stack-wrapper {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .custom-section {
+        flex-direction: column;
+        height: auto; 
+    }
+
+    .left-panel, .right-panel {
+        width: 100%;
+    }
+
+    .small-cards {
+        flex-direction: column; 
+        gap: 10px;
+    }
+
+    .small-card {
+        width: 100%; 
+    }
+}
