@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import styles from "./LogIn.module.css";
+import Cookies from "js-cookie";
 
 const LogIn = () => {
     const [isSignIn, setIsSignIn] = useState(true);
@@ -9,6 +12,8 @@ const LogIn = () => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
 
+    const navigate = useNavigate();
+
     const handleToggle = (event) => {
         event.preventDefault();
         setIsSignIn((prev) => !prev);
@@ -16,10 +21,11 @@ const LogIn = () => {
         // reset username and password
         setUsername("")
         setPassword("")
+        setEmail("")
     };
 
-    const authenticate = async () => {
-        console.log("IN RIGHT NOW");
+    const authenticate = async (e) => {
+        e.preventDefault();
         try {
             const response = await fetch("http://localhost:3001/api/users/login", {
                 method: "POST",
@@ -27,7 +33,7 @@ const LogIn = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    username: username,
+                    email: email,
                     password: password,
                 })
             });
@@ -35,11 +41,16 @@ const LogIn = () => {
             const data = await response.json();
 
             if(!response.ok) {
+                console.log(response);
                 throw new Error(data.message || "Authentication failed");
             }
 
+            Cookies.set("token", data.token, {
+                secure: false,
+            })
+
             console.log('Login successful', data);
-            return data;
+            navigate("/");
         } catch (error) {
             console.log("Login error", error);
             return null;
@@ -57,9 +68,9 @@ const LogIn = () => {
                                 <h2>Sign In</h2>
                                 <div className={styles.input_group}>
                                     <input
-                                        onChange={(e) => setUsername(e.target.value)}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         type="text" required />
-                                    <label>username</label>
+                                    <label>email</label>
                                 </div>
                                 <div className={styles.input_group}>
                                     <input
