@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./ProfilePage.module.css";
 import Header from "../../components/Header/Header";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import SettingsModal from "./SettingsModal";
 
 const ProfilePage = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3001/api/users/verify', {
+  //     method: 'GET',
+  //     credentials: 'include'
+  //   })
+  //       .then(res => {
+  //         if(!res.ok) navigate('/login');
+  //         return res.json();
+  //       })
+  //       .then(data => {
+  //         console.log('User authenticated:', data);
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //         navigate('/login');
+  //       })
+  // })
 
   const toggleSettings = () => {
     setIsSettingsOpen((prev) => !prev);
