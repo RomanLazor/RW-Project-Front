@@ -60,7 +60,7 @@ const LogIn = () => {
     const Register = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${API_URL}/api/users/login`, {
+            const response = await fetch(`${API_URL}/api/users/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
