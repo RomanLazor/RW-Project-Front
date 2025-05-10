@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from "./LogIn.module.css";
-import Cookies from "js-cookie";
 
 const LogIn = () => {
     const [isSignIn, setIsSignIn] = useState(true);
@@ -24,6 +23,7 @@ const LogIn = () => {
         setEmail("")
     };
 
+    // onclick "Sign In"
     const authenticate = async (e) => {
         e.preventDefault();
         try {
@@ -53,6 +53,37 @@ const LogIn = () => {
             return null;
         }
     };
+
+    // on click Sign Up
+    const Register = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:3001/api/users/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                })
+            })
+
+            const data = await response.json();
+
+            if(!response.ok) {
+                console.log(response);
+                throw new Error(data.message || "Register failed");
+            }
+
+            console.log('Register successful', data);
+            navigate("/");
+        } catch (error) {
+            console.log("Register error", error);
+            return null;
+        }
+    }
+
 
     return (
         <div className={`${styles.login_container} ${isSignIn ? styles.sign_in_active : styles.sign_up_active}`}>
@@ -117,7 +148,7 @@ const LogIn = () => {
                                     <label><input type="checkbox" /> I agree to the terms & conditions</label>
                                 </div>
 
-                                <button className={styles.s_button}  type="submit">Sign Up</button>
+                                <button className={styles.s_button} onClick={Register}  type="submit">Sign Up</button>
                                 <div className={styles.signup_link}>
                                     <p>
                                         <span onClick={handleToggle} className={styles.toggle_text}> Sign In</span>
