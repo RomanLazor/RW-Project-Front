@@ -1,5 +1,7 @@
 import {createContext, useEffect, useState} from "react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
@@ -9,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const verifyUser = async () => {
             try {
-                const res = await fetch('http://localhost:3001/api/users/verify', {
+                const res = await fetch(`${API_URL}/api/users/verify`, {
                     method: 'GET',
                     credentials: 'include' // true?
 
@@ -17,7 +19,9 @@ export const AuthProvider = ({ children }) => {
                 console.log(res);
 
                 if (!res.ok) {
-                    const errorData = await res.json();       // ✅ Parse the JSON body
+                    const errorData = await res.json();
+                    console.log("can't authenticate with jwt", errorData);
+                    return null;
                     throw new Error(errorData.message);
                 }
                 const data = await res.json();

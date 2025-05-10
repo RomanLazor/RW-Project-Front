@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from "./LogIn.module.css";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const LogIn = () => {
     const [isSignIn, setIsSignIn] = useState(true);
 
@@ -27,7 +29,7 @@ const LogIn = () => {
     const authenticate = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3001/api/users/login", {
+            const response = await fetch(`${API_URL}/api/users/login`, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -58,7 +60,7 @@ const LogIn = () => {
     const Register = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3001/api/users/register", {
+            const response = await fetch(`${API_URL}/api/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

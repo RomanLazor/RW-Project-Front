@@ -10,24 +10,6 @@ const ProfilePage = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   fetch('http://localhost:3001/api/users/verify', {
-  //     method: 'GET',
-  //     credentials: 'include'
-  //   })
-  //       .then(res => {
-  //         if(!res.ok) navigate('/login');
-  //         return res.json();
-  //       })
-  //       .then(data => {
-  //         console.log('User authenticated:', data);
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //         navigate('/login');
-  //       })
-  // })
-
   const toggleSettings = () => {
     setIsSettingsOpen((prev) => !prev);
   };

@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Geolocation = () => {
     const [oblast, setOblast] = useState(null);
 
@@ -9,7 +11,7 @@ const Geolocation = () => {
                 const { latitude, longitude } = position.coords;
 
                 // Send to the backend
-                const response = await fetch("http://localhost:3001/api/users/location", {
+                const response = await fetch(`${API_URL}/api/users/location`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
