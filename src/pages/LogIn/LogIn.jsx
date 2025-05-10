@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from "./LogIn.module.css";
+import {AuthContext} from "../../context/AuthContext";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 const LogIn = () => {
     const [isSignIn, setIsSignIn] = useState(true);
 
+    const { verifyUser } = useContext(AuthContext);
     // for auth
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -26,7 +28,7 @@ const LogIn = () => {
     };
 
     // onclick "Sign In"
-    const authenticate = async (e) => {
+    const Authenticate = async (e) => {
         e.preventDefault();
         try {
             const response = await fetch(`${API_URL}/api/users/login`, {
@@ -49,7 +51,9 @@ const LogIn = () => {
             }
 
             console.log('Login successful', data);
+            await verifyUser();
             navigate("/");
+
         } catch (error) {
             console.log("Login error", error);
             return null;
@@ -114,7 +118,7 @@ const LogIn = () => {
                                     <a href="#" className={styles.forgot_password}>Forgot your password?</a>
                                 </div>
 
-                                <button onClick={authenticate} className={styles.s_button} type="submit">Sign In</button>
+                                <button onClick={Authenticate} className={styles.s_button} type="submit">Sign In</button>
                                 <div className={styles.signup_link}>
                                     <p> 
                                     <span onClick={handleToggle} className={styles.toggle_text}>Sign Up</span>
