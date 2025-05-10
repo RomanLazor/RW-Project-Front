@@ -85,6 +85,7 @@ const LogIn = () => {
             }
 
             console.log('Register successful', data);
+            await verifyUser();
             navigate("/");
         } catch (error) {
             console.log("Register error", error);
