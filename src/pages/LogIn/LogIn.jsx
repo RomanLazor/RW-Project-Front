@@ -29,6 +29,7 @@ const LogIn = () => {
         try {
             const response = await fetch("http://localhost:3001/api/users/login", {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -44,10 +45,6 @@ const LogIn = () => {
                 console.log(response);
                 throw new Error(data.message || "Authentication failed");
             }
-
-            Cookies.set("token", data.token, {
-                secure: false,
-            })
 
             console.log('Login successful', data);
             navigate("/");
