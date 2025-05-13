@@ -5,6 +5,7 @@ import Categories from "./pages/Categories/Categories"
 import NotFound from "./components/Page404"
 import ItalianCategory from "./pages/Categories/ItalianCategory/ItalianCategory"
 import UnderConstruction from "./pages/UnderConstruction/UnderConstruction"
+import UkraineMap from './pages/Map/UkraineMap';
 
 function App() {
   return (
@@ -15,10 +16,12 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/italian" element={<ItalianCategory />} />
           <Route path="/login" element={<UnderConstruction />} />
-          <Route path="/map" element={<UnderConstruction />} />
+          <Route path="/map" element={<UkraineMap />} />
           <Route path="/profile" element={<UnderConstruction/> } />
           <Route path="/about" element={<UnderConstruction/> } />
           <Route path="/categories/*" element={<UnderConstruction />} />
+
+
 
 
           <Route path="*" element={<NotFound />} />
