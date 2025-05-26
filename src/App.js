@@ -5,6 +5,7 @@ import Categories from "./pages/Categories/Categories"
 import NotFound from "./components/Page404"
 import ItalianCategory from "./pages/Categories/ItalianCategory/ItalianCategory"
 import UnderConstruction from "./pages/UnderConstruction/UnderConstruction"
+import UkraineMap from './pages/Map/UkraineMap';
 import AboutUs from './pages/AboutUs/AboutUs';
 import LogIn from './pages/LogIn/LogIn';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
@@ -24,14 +25,12 @@ function App() {
             <Route path="/categories" element={<Categories />} />
             <Route path="/categories/italian" element={<ItalianCategory />} />
             <Route path="/login" element={<LogIn />} />
-
             <Route path="/map" element={
                 <PrivateRoute>
-                  <UnderConstruction />
+                  <UkraineMap />
                 </PrivateRoute>
               }
             />
-
             <Route path="/profile" element=
               {
                 <PrivateRoute>
