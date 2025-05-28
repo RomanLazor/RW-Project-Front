@@ -18,10 +18,12 @@ const ProfilePage = () => {
       <div className={styles.container}>
         <div className={styles.profileSection}>
           <div className={styles.textContainer}>
-            <p className={styles.placeholderText}>lorem ipsum</p>
-            <p className={styles.placeholderText}>lorem ipsum</p>
-            <p className={styles.placeholderText}>lorem ipsum</p>
+            <p className={styles.placeholderText}>email</p>
+            <p className={styles.placeholderText}>short bio</p>
+            <p className={styles.placeholderText}>regisrtation date</p>
+            <Link to="/addrecipe">
             <button className={styles.addButton}>add new</button>
+            </Link>
           </div>
           <div className={styles.profileImageContainer}>
             <img
@@ -43,10 +45,10 @@ const ProfilePage = () => {
         </div>
 
         <div className={styles.loremSection}>
-          <h1 className={styles.loremText}>LOREM IPSUM</h1>
+          <h1 className={styles.loremText}>My Creations </h1>
           <button className={styles.moreButton}>more</button>
         </div>
-
+                        {/*} Тут треба прикрутити функцію відображення доданих рецептів {*/}
         <div className={styles.imageGrid_1}>
           <div className={styles.imageCard}>
             <img
@@ -97,7 +99,7 @@ const ProfilePage = () => {
 
       <div className={styles.imageGridWrapper}>
         <div className={styles.loremSection_1}>
-          <h1 className={styles.loremTextB}>LOREM IPSUM</h1>
+          <h1 className={styles.loremTextB}>Taste Collection</h1>
           <a href="#recipe2" className={styles.moreButton}>
             <span className={styles.moreButton}>more</span>
           </a>

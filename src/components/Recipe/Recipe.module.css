@@ -1,0 +1,137 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.recipeForm {
+  background: #fffaf3;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  gap: 40px;
+  max-width: 850px;
+  width: 90%;
+  position: relative;
+  flex-wrap: wrap;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.uploadBox {
+  width: 270px;
+  height: 370px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipeName {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 90%;
+  padding: 6px;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  font-size: 13px;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.uploadIcon {
+  font-size: 36px;
+}
+
+.browse {
+  color: #f67c6b;
+  text-decoration: underline;
+  cursor: pointer;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.formInfo {
+  flex: 1;
+  min-width: 250px;
+}
+
+.formInfo textarea {
+  width: 100%;
+  height: 60px;
+  resize: none;
+  border: 1px solid #ccc;
+  background: transparent;
+  padding: 8px;
+  margin-top: 4px;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.ingredients {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.plusButton {
+  background: #f67c6b;
+  color: white;
+  border: none;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dropdowns {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.dropdowns select {
+  padding: 5px 10px;
+  font-size: 14px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.addButton {
+  margin-top: 20px;
+  background: #f4ede4;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}

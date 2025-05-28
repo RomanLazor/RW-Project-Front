@@ -1,10 +1,10 @@
 .card {
     position: relative;
-    width: 511px;
-    height: 636px;
+    width: 311px;
+    height: 400px;
     border-radius: 50px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
     transition: transform 0.3s ease-in-out;
   }
   

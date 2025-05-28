@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from "./LogIn.module.css";
+import { Link } from 'react-router-dom';
 
 const LogIn = () => {
     const [isSignIn, setIsSignIn] = useState(true);
@@ -29,8 +30,9 @@ const LogIn = () => {
                                 <div className={styles.remember}>
                                     <a href="#" className={styles.forgot_password}>Forgot your password?</a>
                                 </div>
-
+                                <Link to="/" >
                                 <button className={styles.s_button} type="submit">Sign In</button>
+                                </Link>
                                 <div className={styles.signup_link}>
                                     <p> 
                                     <span onClick={handleToggle} className={styles.toggle_text}> Sign Up</span>
@@ -55,8 +57,9 @@ const LogIn = () => {
                                 <div className={styles.remember}>
                                     <label><input type="checkbox" /> I agree to the terms & conditions</label>
                                 </div>
-
+                                <Link to="/" >
                                 <button className={styles.s_button}  type="submit">Sign Up</button>
+                                </Link>
                                 <div className={styles.signup_link}>
                                     <p>
                                         <span onClick={handleToggle} className={styles.toggle_text}> Sign In</span>

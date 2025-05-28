@@ -4,7 +4,53 @@
   cursor: pointer;
   font-family: "Comfortaa", sans-serif; 
 }
+.header {
+  padding-top: 30px;
+}
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 70px;
+  position: relative;
+}
+
+.navLeft,
+.navRight {
+  display: flex;
+  gap: 60px;
+}
+
+.logo {
+  margin-top: 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative; 
+}
+
+.logoImage {
+  height: auto;
+  width: 120px; 
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 60px;
+}
+
+.logoImage {
+  height: 64px;        
+  width: auto;
+}
 .section2 {
   padding: 100px 48px;
   display: flex;
@@ -22,7 +68,7 @@
 
 .giant_text {
   font-size: 124px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 110%;
   font-family: "Comfortaa", sans-serif; 
 }
@@ -78,7 +124,7 @@
 
   font-weight: 500;
   font-size: 28px;
-  color: #FFF9F2;
+  color: #FF5C39;
   font-family: "Comfortaa", sans-serif; 
 }
 
@@ -169,7 +215,7 @@
   align-items: center;
   justify-content: center;
 
-  color: white;
+  color: #FF5C39;
   font-weight: 500;
   font-size: 30px;
   font-family: "Comfortaa", sans-serif; 
@@ -179,8 +225,8 @@
 
 .cardsContainer {
   position: relative;
-  width: 511px; 
-  height: 636px; 
+    width: 311px;
+    height: 400px;
   margin-left: 12vw;
   display: flex;
   justify-content: center;
@@ -237,7 +283,7 @@
 .underline {
   text-decoration: underline;
   font-family: 'Comfortaa', sans-serif;
-  text-decoration-color: red;
+  text-decoration-color: #FF5C39;
 }
 
 .imageWrapper {
@@ -265,7 +311,7 @@
   margin-bottom: 150px;
 }
 
-@media (max-width: 1050px) {
+/*@media (max-width: 1050px) {
   .right_section2 {
     display: none;
   }
@@ -274,16 +320,16 @@
     width: 100%;
     margin-right: 0;
   }
-}
+}*/
 
 
-@media (max-width: 1550px) {
+/*@media (max-width: 1550px) {
   .cardsContainer {
    display: none;
   }
 
   
-}
+}*/
 .text_under_red {
   font-family: "Comfortaa", sans-serif; 
 }
