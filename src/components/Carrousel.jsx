@@ -2,10 +2,10 @@ import { React, useState, useEffect } from "react";
 import styles from "./carrousel.module.css";
 
 const Carrousel = () => {
-    /*const [recipes, setRecipes] = useState([]);
-    const [loading, setLoading] = useState(true);*/
+    const [recipes, setRecipes] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const recipes = [
+   /* const recipes = [
         { img: "/LastRecepies/1.png", name: "Pasta with mushrooms", link: "#" },
         { img: "/LastRecepies/2.png", name: "Pancakes with fruits", link: "#" },
         { img: "/LastRecepies/3.png", name: "Pasta with shrimps", link: "#" },
@@ -26,9 +26,9 @@ const Carrousel = () => {
         { img: "/LastRecepies/18.png", name: "Homemade croissants", link: "#" },
         { img: "/LastRecepies/19.png", name: "Greek salad", link: "#" },
         { img: "/LastRecepies/20.png", name: "Granola with fruits", link: "#" },
-    ];
+    ];*/
 
-    /*useEffect(() => {
+    useEffect(() => {
         const fetchRecipes = async () => {
         try {
             const response = await fetch('http://94.231.178.180:3001/api/recipes/getlast20');
@@ -46,7 +46,7 @@ const Carrousel = () => {
         };
 
         fetchRecipes();
-    }, []);*/
+    }, []);
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -69,9 +69,9 @@ const Carrousel = () => {
         return items;
     };
     
-    /*if (loading) {
+    if (loading) {
         return <p>Loading recipes...</p>;
-    }*/
+    }
 
     return (
         <div className={styles.container}>
