@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   
@@ -15,10 +16,19 @@ const Footer = () => {
       </div>
       <img src="/Footer/footer.svg" className={styles.logo} alt="logo" />
       <div className={styles.links_right}>
-        <div>Home</div>
+
+        <Link to={"/"}>
+        <div >Home</div>
+        </Link>
+        <Link  to={"/categories"}>
         <div>Categories</div>
+        </Link>
+        <Link  to={"/map"}>
         <div>Map</div>
+        </Link>
+        <Link  to={"/about"}>
         <div>About Us</div>
+        </Link>
 
       </div>
     </div>

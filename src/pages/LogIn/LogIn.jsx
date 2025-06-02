@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from "./LogIn.module.css";
 import {AuthContext} from "../../context/AuthContext";
-
 const API_URL = process.env.REACT_APP_API_URL;
 
 const LogIn = () => {
@@ -118,7 +117,6 @@ const LogIn = () => {
                                 <div className={styles.remember}>
                                     <a href="#" className={styles.forgot_password}>Forgot your password?</a>
                                 </div>
-
                                 <button onClick={Authenticate} className={styles.s_button} type="submit">Sign In</button>
                                 <div className={styles.signup_link}>
                                     <p> 

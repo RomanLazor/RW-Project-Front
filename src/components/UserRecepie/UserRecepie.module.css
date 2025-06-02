@@ -1,0 +1,112 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.recipeView {
+  background: #fffaf3;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  gap: 40px;
+  max-width: 850px;
+  position: relative;
+}
+
+.imageBox {
+  width: 270px;
+  height: 370px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipeName {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.info {
+  flex: 1;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.orange {
+  color: #f67c6b;
+  font-weight: bold;
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.text {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.ingredients {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.categories {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.changeButton {
+  background: #f4ede4;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background: #eb6842;
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}

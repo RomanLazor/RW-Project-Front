@@ -12,8 +12,12 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import CreatePassword from './pages/CreatePassword/CreatePassword';
 import ChangedPassword from './pages/ChangedPassword/ChangedPassword';
+import RecipeView from './components/RecipeView/RecipeView';
+import UserRecipe from './components/UserRecepie/UserRecepie';
+import AddRecipeWithImage from './components/Recipe/Recipe';
 import {AuthProvider} from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
+
 
 function App() {
   return (
@@ -44,7 +48,9 @@ function App() {
             <Route path="/reset_password/*" element={<ResetPassword />} />
             <Route path="/create_password/*" element={<CreatePassword />} />
             <Route path="/changed_password/*" element={<ChangedPassword />} />
-
+            <Route path="/recipe" element={<RecipeView />} />
+            <Route path="/recipe" element={<UserRecipe />} />
+            <Route path="/addrecipe" element={<AddRecipeWithImage />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
