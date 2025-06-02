@@ -7,11 +7,15 @@ import Card from "../../components/Card/Card";
 import Carrousel from "../../components/Carrousel"
 import { Link } from "react-router-dom";
 import RandomCardSet from "../../components/Random/randomimage";
+import GetLocation from "../../components/GetLocation/GetLocation";
+
 
 const Mainpage = () => {
+
   return (
     <>
       <div className={styles.Mainpage}>
+        {/*<GetLocation />*/}
         <Header />
         <section className={styles.heroSection}>
           <div className={styles.textWrapper}>
