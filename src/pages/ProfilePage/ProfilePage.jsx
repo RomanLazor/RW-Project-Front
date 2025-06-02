@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./ProfilePage.module.css";
 import Header from "../../components/Header/Header";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import SettingsModal from "./SettingsModal";
 
 const ProfilePage = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const toggleSettings = () => {
     setIsSettingsOpen((prev) => !prev);
