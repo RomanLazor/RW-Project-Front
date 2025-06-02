@@ -15,13 +15,16 @@ import ChangedPassword from './pages/ChangedPassword/ChangedPassword';
 import RecipeView from './components/RecipeView/RecipeView';
 import UserRecipe from './components/UserRecepie/UserRecepie';
 import AddRecipeWithImage from './components/Recipe/Recipe';
+import RandomImage from './components/Random/randomimage';
 import {AuthProvider} from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
+
 
 
 function App() {
   return (
     <div className="App">
+
       <BrowserRouter>
         <AuthProvider>
           <Routes>
