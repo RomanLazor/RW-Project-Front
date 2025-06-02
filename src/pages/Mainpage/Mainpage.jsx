@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import Card from "../../components/Card/Card";
 import Carrousel from "../../components/Carrousel"
 import { Link } from "react-router-dom";
+import RandomCardSet from "../../components/Random/randomimage";
 
 const Mainpage = () => {
   return (
@@ -72,29 +73,8 @@ const Mainpage = () => {
           </div>
         </section>
 
-        <section className={styles.section3}>
-          <div className={styles.red_section_wrapper}>
-            <div className={styles.left_red_section}>
-              <div className={styles.big_random_text}>RANDOM</div>
-              <div className={styles.red_section_smaller_text}>
-                Can’t decide? Let us surprise you!
-              </div>
-              <div className={styles.yellow_random_button}>Pick a Random Recipe</div>
-            </div>
-            <div className={styles.right_red_section}>
-              <div className={styles.cardsContainer}>
-                <div className={`${styles.card} ${styles.cardLeft}`}>
-                  <Card image="/mainpage/randimage1.jfif" />
-                </div>
-                <div className={`${styles.card} ${styles.cardCenter}`}>
-                  <Card image="/mainpage/randimage2.jfif" />
-                </div>
-                <div className={`${styles.card} ${styles.cardRight}`}>
-                  <Card image="/mainpage/randimage3.jfif" />
-                </div>
-              </div>
-            </div>
-          </div>
+       <section className={styles.section3}>
+            <RandomCardSet />
         </section>
         <section className={styles.carrousel}>
           <Carrousel  />

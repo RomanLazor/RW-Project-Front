@@ -14,6 +14,7 @@ import ChangedPassword from './pages/ChangedPassword/ChangedPassword';
 import RecipeView from './components/RecipeView/RecipeView';
 import UserRecipe from './components/UserRecepie/UserRecepie';
 import AddRecipeWithImage from './components/Recipe/Recipe';
+import RandomImage from './components/Random/randomimage';
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
           <Route path="/recipe" element={<RecipeView />} />
           <Route path="/urecipe" element={<UserRecipe />} />
           <Route path="/addrecipe" element={<AddRecipeWithImage />} />
+          <Route path="/random" element={<RandomImage/>} />
+          
 
 
           <Route path="*" element={<NotFound />} />
