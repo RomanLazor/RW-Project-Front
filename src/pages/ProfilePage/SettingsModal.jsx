@@ -17,7 +17,7 @@ const SettingsModal = ({ isSettingsOpen, toggleSettings, userImage, username }) 
               alt="User"
             />
             <p className={styles.username}>{username || "USERNAME"}</p>
-            <Link to="/reset_password" className={styles.toggleText}>
+            <Link to="/create_new_password" className={styles.toggleText}>
               change password
             </Link>
             <p className={styles.placeholderText}>change username</p>

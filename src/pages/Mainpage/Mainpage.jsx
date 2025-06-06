@@ -46,7 +46,7 @@ const Mainpage = () => {
             <div className={styles.cards_section2}>
               <div className={styles.map_card}>
                 <img src="/mainpage/arrow.svg" alt="arrow" className={styles.arrow} />
-                <div className={styles.card_white_text}>UKRAINIAN MAP</div>
+                <div className={styles.card_white_text}>NATIONAL DISHES</div>
               </div>
               <div className={styles.two_cards}>
                 <div className={styles.categories_card_blue}>

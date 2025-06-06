@@ -13,9 +13,8 @@ const AboutUs = () => {
         <section className={styles.heroSection}>
           <div className={styles.textWrapper}>
             <h1 className={styles.mainTitle}>
-              LOREM <span className={styles.underline}>IPSUM</span>
+              DAILY <span className={styles.underline}>INSPIRATION</span>
               <br />
-              DOLOR SI AMET
             </h1>
           </div>
         </section>
@@ -33,27 +32,29 @@ const AboutUs = () => {
         <div className={styles.red_section_wrapper}>
           <h1 className={styles.whitetext}>
             <div className={styles.topText}>
-              <span className={styles.topText}>LOREM</span>
+              <span className={styles.topText}>WHY</span>
               <img src="/mainpage/dump1.png" alt="dump" className={styles.inlineImage} />
-              <span className={styles.topText}>LOREM</span>
+              <span className={styles.topText}>US?</span>
             </div>
-            <div className={styles.bottomText}>IPSUM DOLOR?</div>
+            <div className={styles.bottomText}>
+              
+            </div>
           </h1>
         </div>
 
        
         <div className={styles.cardsContainer}>
           <div className={styles.card}>
-            <h3>Lorem</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Cook without stress</h3>
+            <p>Our recipes are easy to follow, even for beginners</p>
           </div>
           <div className={styles.card}>
-            <h3>Lorem</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Discover authentic</h3>
+            <p>Dishes from different regions of Ukraine with our interactive map</p>
           </div>
           <div className={styles.card}>
-            <h3>Lorem</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Create and save</h3>
+            <p>Manage your favorites, and personalize your cooking journey</p>
           </div>
         </div>
       </section>
@@ -61,9 +62,9 @@ const AboutUs = () => {
       <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.textSection}>
-          <h1 className={styles.heading}>LOREM</h1>
+          <h1 className={styles.heading}>Cooking Together</h1>
           <p className={styles.paragraph}>
-            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud
+            We believe that great food can be simple. Together with you, we’re building a space where every recipe tells a story, and every dish creates an experience.
           </p>
         </div>
         <img src="/LastRecepies/8.png" alt="Food" className={styles.image} />

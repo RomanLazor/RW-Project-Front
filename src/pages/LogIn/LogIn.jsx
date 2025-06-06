@@ -97,7 +97,7 @@ const LogIn = () => {
         <div className={`${styles.login_container} ${isSignIn ? styles.sign_in_active : styles.sign_up_active}`}>
             <section>
                 <div className={styles.login_wrapper}>
-                <a href="#" className={styles.close_btn}>Close</a>
+                <a href="/" className={styles.close_btn}>Close</a>
                     <div className={styles.form_container}>
                         {isSignIn ? (
                             <form>
@@ -115,7 +115,7 @@ const LogIn = () => {
                                     <label>password</label>
                                 </div>
                                 <div className={styles.remember}>
-                                    <a href="#" className={styles.forgot_password}>Forgot your password?</a>
+                                    <a href="/reset_password" className={styles.forgot_password}>Forgot your password?</a>
                                 </div>
                                 <button onClick={Authenticate} className={styles.s_button} type="submit">Sign In</button>
                                 <div className={styles.signup_link}>
