@@ -18,6 +18,14 @@ import AddRecipeWithImage from './components/Recipe/Recipe';
 import RandomImage from './components/Random/randomimage';
 import {AuthProvider} from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
+import AmericanCategory from './pages/Categories/AmericanCategory/AmericanCategory';
+import ChineseCategory from './pages/Categories/ChineseCategory/ChineseCategory';
+import FrenchCategory from './pages/Categories/FrenchCategory/FrenchCategory';
+import GreekCategory from './pages/Categories/GreekCategory/GreekCategory';
+import JapaneseCategory from './pages/Categories/JapaneseCategory/JapaneseCategory';
+import SpanishCategory from './pages/Categories/SpanishCategory/SpanishCategory';
+import CreateNewPassword from './pages/CreateNewPassword/CreateNewPassword';
+
 
 
 
@@ -31,6 +39,12 @@ function App() {
             <Route path="/" element={<Mainpage />}/>
             <Route path="/categories" element={<Categories />} />
             <Route path="/categories/italian" element={<ItalianCategory />} />
+            <Route path="/categories/american" element={<AmericanCategory />} />
+            <Route path="/categories/chinese" element={<ChineseCategory />} />
+            <Route path="/categories/french" element={<FrenchCategory />} />
+            <Route path="/categories/greek" element={<GreekCategory />} />
+            <Route path="/categories/japanese" element={<JapaneseCategory />} />
+            <Route path="/categories/spanish" element={<SpanishCategory />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/map" element={
                 <PrivateRoute>
@@ -54,6 +68,7 @@ function App() {
             <Route path="/recipe" element={<RecipeView />} />
             <Route path="/recipe" element={<UserRecipe />} />
             <Route path="/addrecipe" element={<AddRecipeWithImage />} />
+             <Route path="/create_new_password/*" element={<CreateNewPassword />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
