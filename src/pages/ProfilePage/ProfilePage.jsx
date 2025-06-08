@@ -5,10 +5,47 @@ import {Link, useNavigate} from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import SettingsModal from "./SettingsModal";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const ProfilePage = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
-  const navigate = useNavigate();
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchProfile = async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/users/profile`, {
+        method: "GET",
+        credentials: "include",
+      });
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message);
+      }
+
+      const data = await res.json();
+      setProfile(data);
+      console.log(data);
+    } catch (err) {
+      console.error("Failed to load profile", err);
+      setProfile(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  if (loading) {
+    return <div>Loading profile...</div>;
+  }
+
+  if (!profile) {
+    return <div>Failed to load profile.</div>;
+  }
 
   const toggleSettings = () => {
     setIsSettingsOpen((prev) => !prev);
@@ -20,9 +57,9 @@ const ProfilePage = () => {
       <div className={styles.container}>
         <div className={styles.profileSection}>
           <div className={styles.textContainer}>
-            <p className={styles.placeholderText}>email</p>
-            <p className={styles.placeholderText}>short bio</p>
-            <p className={styles.placeholderText}>regisrtation date</p>
+            <p className={styles.placeholderText}>{profile.username.charAt(0).toUpperCase() + profile.username.slice(1)}</p>
+            <p className={styles.placeholderText}>{profile.email}</p>
+            <p className={styles.placeholderText}>{profile.bio || "Your bio"}</p>
             <Link to="/addrecipe">
             <button className={styles.addButton}>add new</button>
             </Link>
@@ -33,7 +70,7 @@ const ProfilePage = () => {
               alt="Profile"
               className={styles.profileImage}
             />
-            <p className={styles.username}>USERNAME</p>
+            <p className={styles.username}>{profile.username.charAt(0).toUpperCase() + profile.username.slice(1)}</p>
             <button onClick={toggleSettings} className={styles.settingsButton}>
               <img className={styles.wheel} src="ProfilePage/image.png" alt="Settings" />
             </button>
