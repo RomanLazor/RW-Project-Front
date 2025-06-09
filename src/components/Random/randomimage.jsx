@@ -27,7 +27,7 @@ const RandomCardSet = () => {
       const response = await fetch(`${API_URL}/api/random-recipe`);
       const data = await response.json();
 
-      const recipe = data.recipe_id ? data : data[0];
+      const recipe = data.recipe_id || data;
       const newImages = [
         fallbackImages[0],
         {
