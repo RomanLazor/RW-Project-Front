@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import styles from './Recipe.module.css';
 import { Link } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const AddRecipeWithImage = ({ onClose }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [ingredients, setIngredients] = useState(['']);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [cuisine, setCuisine] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -12,7 +19,9 @@ const AddRecipeWithImage = ({ onClose }) => {
 
     const reader = new FileReader();
     reader.onload = (e) => {
-      setImagePreview(e.target.result);
+      const base64 = e.target.result;
+      setImagePreview(base64);
+      setImageUrl(base64);
     };
     reader.readAsDataURL(file);
   };
@@ -27,8 +36,67 @@ const AddRecipeWithImage = ({ onClose }) => {
     setIngredients(updated);
   };
 
+  const handleSubmit = async () => {
+    if (!title || !category || !cuisine) {
+      alert("Please fill required fields: Title, Category, Cuisine");
+      return;
+    }
+
+    try {
+      const recipeData = {
+        title,
+        description,
+        category,
+        cuisine,
+        image_url: imageUrl,
+        ingredients: ingredients.filter((ing) => ing.trim() !== ''),
+      };
+
+      const response = await fetch(`${API_URL}/api/recipes/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(recipeData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to add recipe");
+      }
+
+      alert("Recipe added successfully!");
+      console.log("Recipe added:", data);
+
+      setTitle('');
+      setDescription('');
+      setCategory('');
+      setCuisine('');
+      setImagePreview(null);
+      setImageUrl('');
+      setIngredients(['']);
+
+      if (typeof onClose === 'function') {
+        onClose();
+      }
+
+    } catch (err) {
+      alert("Error adding recipe: " + err.message);
+      console.error(err);
+    }
+  };
+
   return (
-    <div className={styles.backdrop} onClick={onClose}>
+    <div
+      className={styles.backdrop}
+      onClick={() => {
+        if (typeof onClose === 'function') {
+          onClose();
+        }
+      }}
+    >
       <div className={styles.recipeForm} onClick={(e) => e.stopPropagation()}>
         <div
           className={styles.uploadBox}
@@ -58,12 +126,18 @@ const AddRecipeWithImage = ({ onClose }) => {
             type="text"
             className={styles.recipeName}
             placeholder="ENTER A RECIPE NAME..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
         <div className={styles.formInfo}>
           <label>Description</label>
-          <textarea placeholder="l........"></textarea>
+          <textarea
+            placeholder="l........"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
 
           <div className={styles.ingredients}>
             <label>Ingredients</label>
@@ -95,21 +169,52 @@ const AddRecipeWithImage = ({ onClose }) => {
           ))}
 
           <div className={styles.dropdowns}>
-            <select>
-              <option>category</option>
+            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+              <option value="">category</option>
+              <option value="Italian">Italian</option>
+              <option value="French">French</option>
+              <option value="Spanish">Spanish</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Indian">Indian</option>
+              <option value="Greek">Greek</option>
+              <option value="Ukrainian">Ukrainian</option>
+              <option value="Turkish">Turkish</option>
+              <option value="Korean">Korean</option>
+              <option value="American">American</option>
             </select>
-            <select>
-              <option>subcategory</option>
+
+            <select value={cuisine} onChange={(e) => setCuisine(e.target.value)}>
+              <option value="">subcategory</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Main Courses">Main Courses</option>
+              <option value="Snacks">Snacks</option>
+              <option value="Desserts">Desserts</option>
+              <option value="Salads">Salads</option>
+              <option value="Vegan Dishes">Vegan Dishes</option>
+              <option value="Drinks">Drinks</option>
             </select>
           </div>
 
-          <button className={styles.addButton} type="button">
+          <button className={styles.addButton} type="button" onClick={handleSubmit}>
             add
           </button>
         </div>
-      <Link to="/profile">
-        <div className={styles.close} onClick={onClose}>✕</div>
-      </Link>
+
+        <Link to="/profile">
+          <div
+            className={styles.close}
+            onClick={(e) => {
+              e.preventDefault();
+              if (typeof onClose === 'function') {
+                onClose();
+              }
+            }}
+          >
+            ✕
+          </div>
+        </Link>
       </div>
     </div>
   );
