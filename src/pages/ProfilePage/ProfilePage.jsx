@@ -15,7 +15,7 @@ const ProfilePage = () => {
   const AddedRecepies = [];
   const SavedRecepies = []; 
 
-  const toggleSettings = () => setIsSettingsOpen((prev) => !prev);
+
   const openRecipeView = () => setIsRecipeOpen(true);
   const closeRecipeView = () => setIsRecipeOpen(false);
   
