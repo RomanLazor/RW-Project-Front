@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
                 const errorData = await res.json();
                 throw new Error(errorData.message);
             }
-
             const data = await res.json();
             setUser(data.user);
         } catch (err) {

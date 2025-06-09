@@ -13,6 +13,7 @@ const LogIn = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ const LogIn = () => {
         setUsername("")
         setPassword("")
         setEmail("")
+        setError("");
     };
 
     // onclick "Sign In"
@@ -54,6 +56,7 @@ const LogIn = () => {
             navigate("/");
 
         } catch (error) {
+            setError(error.message);
             console.log("Login error", error);
             return null;
         }
@@ -87,6 +90,7 @@ const LogIn = () => {
             await verifyUser();
             navigate("/");
         } catch (error) {
+            setError(error.message);
             console.log("Register error", error);
             return null;
         }
@@ -113,6 +117,14 @@ const LogIn = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         type="password" required />
                                     <label>password</label>
+                                </div>
+                                {error ? (
+                                    <div className={styles.error}>
+                                        {error}
+                                    </div>
+                                ): ""}
+                                <div>
+
                                 </div>
                                 <div className={styles.remember}>
                                     <a href="/reset_password" className={styles.forgot_password}>Forgot your password?</a>
@@ -154,6 +166,12 @@ const LogIn = () => {
                                 <div className={styles.remember}>
                                     <label><input type="checkbox" /> I agree to the terms & conditions</label>
                                 </div>
+
+                                {error ? (
+                                    <div className={styles.error}>
+                                        {error}
+                                    </div>
+                                ): ""}
 
                                 <button className={styles.s_button} onClick={Register}  type="submit">Sign Up</button>
                                 <div className={styles.signup_link}>

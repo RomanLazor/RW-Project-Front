@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './RecipeView.module.css';
 
+
 const RecipeView = ({ onClose }) => {
   return (
     <div className={styles.overlay}>

@@ -1,40 +1,83 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Searchbar.module.css";
 
-const localRecipes = [
-  { id: 1, name: "Granola with fruits", image: "/images/image1.png" },
-  { id: 2, name: "Pasta with green", image: "/images/image2.png" },
-  { id: 3, name: "Pancakes", image: "/images/image3.png" },
-  { id: 4, name: "Pasta and leaf", image: "/images/image4.png" },
-];
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Searchbar = ({ isSearchOpen, toggleSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [recentRecipes, setRecentRecipes] = useState([]);
+  const [error, setError] = useState("");
+
+  const debounceTimeout = useRef(null);
 
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+    const query = event.target.value;
+    setSearchQuery(query);
 
-    if (event.target.value.trim() === "") {
+    // Clear previous timeout if still waiting
+    if (debounceTimeout.current) {
+      clearTimeout(debounceTimeout.current);
+    }
+
+    // If empty string, reset results
+    if (query.trim() === "") {
       setSearchResults([]);
       return;
     }
 
-    const filteredRecipes = localRecipes.filter((recipe) =>
-      recipe.name.toLowerCase().includes(event.target.value.toLowerCase())
-    );
 
-    setSearchResults(filteredRecipes);
+    // Set new debounce timeout
+    debounceTimeout.current = setTimeout(() => {
+      performSearch(query);
+    }, 500); // 3 seconds
   };
 
-   const handleRecipeClick = (recipe) => {
+  const performSearch = async (query) => {
+    setError("")
+    try {
+      const res = await fetch(`${API_URL}/api/recipes/search`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          search_text: query,
+          category: null, // or you can support categories later
+        }),
+      });
+
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.log(errorData.message);
+        setError(errorData.error);
+        throw new Error(errorData.message);
+      }
+
+      const data = await res.json();
+      console.log("DATA", data)
+      if(!data.length > 0){
+        setError(data.message);
+      }
+
+      // Assuming your `findRecipe` returns an array of recipes:
+      setSearchResults(data);
+    } catch (err) {
+      console.error("Failed to perform search", err);
+      setError(err.message)
+      setSearchResults([]);
+    }
+  };
+
+  const handleRecipeClick = (recipe) => {
     setRecentRecipes((prev) => {
       const updated = [recipe, ...prev.filter((r) => r.id !== recipe.id)];
-      return updated.slice(0, 4); 
+      return updated.slice(0, 4);
     });
-    toggleSearch(); 
+    toggleSearch();
   };
 
   return (
@@ -51,6 +94,11 @@ const Searchbar = ({ isSearchOpen, toggleSearch }) => {
           />
           <button onClick={toggleSearch} className={styles.close_button}>✖</button>
         </div>
+        {error? (
+          <div className={styles.error}>
+            {error}
+          </div>
+        ): ""}
 
         {searchResults.length > 0 ? (
           <div className={styles.results_section}>
@@ -58,13 +106,13 @@ const Searchbar = ({ isSearchOpen, toggleSearch }) => {
             <div className={styles.results_list}>
               {searchResults.map((recipe) => (
                 <Link
-                  to={`/recipe/${recipe.id}`}
-                  key={recipe.id}
+                  to={`/recipe/${recipe.recipe_id}`}
+                  key={recipe.recipe_id}
                   className={styles.result_card}
                   onClick={() => handleRecipeClick(recipe)}
                 >
-                  <img src={recipe.image} alt={recipe.name} className={styles.recipe_image} />
-                  <p className={styles.recipe_name}>{recipe.name}</p>
+                  <img src={recipe.image_url} alt={recipe.title} className={styles.recipe_image} />
+                  <p className={styles.recipe_name}>{recipe.title}</p>
                 </Link>
               ))}
             </div>
@@ -76,13 +124,13 @@ const Searchbar = ({ isSearchOpen, toggleSearch }) => {
               <div className={styles.results_list}>
                 {recentRecipes.map((recipe) => (
                   <Link
-                    to={`/recipe/${recipe.id}`}
-                    key={recipe.id}
+                    to={`/recipe/${recipe.recipe_id}`}
+                    key={recipe.recipe_id}
                     className={styles.result_card}
                     onClick={() => handleRecipeClick(recipe)}
                   >
-                    <img src={recipe.image} alt={recipe.name} className={styles.recipe_image} />
-                    <p className={styles.recipe_name}>{recipe.name}</p>
+                    <img src={recipe.image_url} alt={recipe.title} className={styles.recipe_image} />
+                    <p className={styles.recipe_name}>{recipe.title}</p>
                   </Link>
                 ))}
               </div>

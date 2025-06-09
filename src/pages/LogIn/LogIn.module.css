@@ -193,3 +193,7 @@ h2 {
     cursor: pointer;
     color: black;
 }
+
+.error {
+    color: #FF1C1C;
+}

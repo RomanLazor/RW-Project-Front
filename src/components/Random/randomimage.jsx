@@ -3,6 +3,8 @@ import Card from "../Card/Card";
 import RecipeView from "../RecipeView/RecipeView";
 import styles from "./randomimage.module.css";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const fallbackImages = [
   { src: "/images/image1.png", title: "Borscht" },
   { src: "/images/image2.png", title: "Varenyky" },
@@ -22,7 +24,7 @@ const RandomCardSet = () => {
   const handleRandomize = async () => {
     setAnimating(true);
     try {
-      const response = await fetch("http://localhost:3001/api/random-recipe");
+      const response = await fetch(`${API_URL}/api/random-recipe`);
       const data = await response.json();
 
       const recipe = data.recipe_id ? data : data[0];

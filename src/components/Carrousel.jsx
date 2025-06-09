@@ -2,6 +2,8 @@ import { React, useState, useEffect } from "react";
 import styles from "./carrousel.module.css";
 import RecipeView from "./RecipeView/RecipeView";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Carrousel = () => {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
