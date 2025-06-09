@@ -78,7 +78,7 @@ const ProfilePage = () => {
               isSettingsOpen={isSettingsOpen} 
               toggleSettings={toggleSettings}
               userImage="ProfilePage/userimg.jfif"
-              username="USERNAME"
+              username={profile.username.charAt(0).toUpperCase() + profile.username.slice(1)}
             />
           </div>
         </div>
