@@ -193,3 +193,9 @@ h2 {
     cursor: pointer;
     color: black;
 }
+
+.error {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    color: #FF1C1C;
+}
