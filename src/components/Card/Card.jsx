@@ -6,6 +6,7 @@ const Card = ({ image, title }) => {
     <div className={styles.card}>
       <img src={image} alt={title} className={styles.cardImage} />
       <div className={styles.cardTitle}>{title}</div>
+      <div className={styles.imageOverlay}></div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import styles from "./ItalianCategory.module.css";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
+import RecipeView from "../../../components/RecipeView/RecipeView"; 
 
 const cuisines = [
   "Breakfast",
@@ -17,6 +18,7 @@ const ItalianCategory = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [chosenCategory, setChosenCategory] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState(null); // 👈
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -38,14 +40,20 @@ const ItalianCategory = () => {
     fetchRecipes();
   }, []);
 
-  // Filter recipes based on selected category (cuisine_id)
   const filteredRecipes = chosenCategory
     ? recipes.filter(recipe => recipe.cuisine_id === chosenCategory)
     : recipes;
 
   const handleCategoryClick = (categoryId) => {
-    // Set the chosen category based on the cuisine_id
     setChosenCategory(categoryId);
+  };
+
+  const openRecipe = (recipe) => {
+    setSelectedRecipe(recipe);
+  };
+
+  const closeRecipe = () => {
+    setSelectedRecipe(null);
   };
 
   if (loading) {
@@ -63,7 +71,7 @@ const ItalianCategory = () => {
               <span
                 key={index}
                 className={chosenCategory === index + 1 ? styles.selectedCategory : ""}
-                onClick={() => handleCategoryClick(index + 1)} // Set category_id based on cuisine order (1-based index)
+                onClick={() => handleCategoryClick(index + 1)}
               >
                 {cuisine}
               </span>
@@ -74,7 +82,16 @@ const ItalianCategory = () => {
         <main>
           <div className={styles.track}>
             {filteredRecipes.map((recipe) => (
-              <div className={styles.item} key={recipe.recipe_id}>
+              <div
+                className={styles.item}
+                key={recipe.recipe_id}
+                onClick={() => openRecipe(recipe)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") openRecipe(recipe);
+                }}
+              >
                 <img src={recipe.image_url} alt={recipe.title} />
                 <p>{recipe.title}</p>
               </div>
@@ -82,6 +99,10 @@ const ItalianCategory = () => {
           </div>
         </main>
       </div>
+
+      {selectedRecipe && (
+        <RecipeView recipe={selectedRecipe} onClose={closeRecipe} />
+      )}
       <Footer />
     </>
   );

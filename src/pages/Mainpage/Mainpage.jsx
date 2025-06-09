@@ -60,12 +60,12 @@ const Mainpage = () => {
                   </div>
                 </div>
                 <div className={styles.categories_card_yellow}>
-                  <Link className={styles.link} to="/categories">
+                  <Link className={styles.link} to="/about">
                     <img src="/mainpage/arrow.svg" alt="arrow" className={styles.arrow2} />
                   </Link>
                   <div className={styles.two_card_white_text}>
-                    <Link className={styles.link} to="/categories">
-                      CATEGORIES
+                    <Link className={styles.link} to="/about">
+                      ABOUT US
                     </Link>
                   </div>
                 </div>

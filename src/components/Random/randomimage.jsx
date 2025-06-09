@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Card from "../Card/Card";
+import RecipeView from "../RecipeView/RecipeView";
 import styles from "./randomimage.module.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -18,6 +19,7 @@ function getThreeRandomImages() {
 const RandomCardSet = () => {
   const [images, setImages] = useState(getThreeRandomImages());
   const [animating, setAnimating] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleRandomize = async () => {
     setAnimating(true);
@@ -25,7 +27,7 @@ const RandomCardSet = () => {
       const response = await fetch(`${API_URL}/api/random-recipe`);
       const data = await response.json();
 
-      const recipe = data.recipe_id || data;
+      const recipe = data.recipe_id ? data : data[0];
       const newImages = [
         fallbackImages[0],
         {
@@ -44,6 +46,9 @@ const RandomCardSet = () => {
       setAnimating(false);
     }
   };
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   return (
     <div className={styles.red_section_wrapper}>
@@ -68,6 +73,13 @@ const RandomCardSet = () => {
                   ? styles.cardCenter
                   : styles.cardRight
               } ${animating ? styles.move : ""}`}
+              onClick={index === 1 ? openModal : undefined}
+              role={index === 1 ? "button" : undefined}
+              tabIndex={index === 1 ? 0 : undefined}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && index === 1) openModal();
+              }}
+              style={{ cursor: index === 1 ? "pointer" : "default" }}
             >
               <Card image={item.src} />
               {index === 1 && <div className={styles.cardTitle}>{item.title}</div>}
@@ -75,6 +87,8 @@ const RandomCardSet = () => {
           ))}
         </div>
       </div>
+
+      {showModal && <RecipeView onClose={closeModal} />}
     </div>
   );
 };
