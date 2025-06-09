@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styles from "./ProfilePage.module.css";
 import Header from "../../components/Header/Header";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useNavigation} from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import SettingsModal from "./SettingsModal";
 
@@ -12,6 +12,8 @@ const ProfilePage = () => {
 
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   const fetchProfile = async () => {
     try {
@@ -30,6 +32,8 @@ const ProfilePage = () => {
     } catch (err) {
       console.error("Failed to load profile", err);
       setProfile(null);
+
+      navigate("/login");
     } finally {
       setLoading(false);
     }
