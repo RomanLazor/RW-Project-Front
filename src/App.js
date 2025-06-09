@@ -25,6 +25,7 @@ import GreekCategory from './pages/Categories/GreekCategory/GreekCategory';
 import JapaneseCategory from './pages/Categories/JapaneseCategory/JapaneseCategory';
 import SpanishCategory from './pages/Categories/SpanishCategory/SpanishCategory';
 import CreateNewPassword from './pages/CreateNewPassword/CreateNewPassword';
+import MapTest from './pages/Map/MapTest';
 
 
 
@@ -46,6 +47,9 @@ function App() {
             <Route path="/categories/japanese" element={<JapaneseCategory />} />
             <Route path="/categories/spanish" element={<SpanishCategory />} />
             <Route path="/login" element={<LogIn />} />
+            
+
+            
             <Route path="/map" element={
                 <PrivateRoute>
                   <UkraineMap />
