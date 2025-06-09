@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './RecipeView.module.css';
 
 const RecipeView = () => {
+
+
+
   return (
     <div className={styles.container}>
       <div className={styles.recipeView}>
