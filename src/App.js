@@ -47,15 +47,15 @@ function App() {
             <Route path="/categories/japanese" element={<JapaneseCategory />} />
             <Route path="/categories/spanish" element={<SpanishCategory />} />
             <Route path="/login" element={<LogIn />} />
-            <Route path="/map" element={<UkraineMap />} />
+            
 
             
-           {/* <Route path="/map" element={
+            <Route path="/map" element={
                 <PrivateRoute>
                   <UkraineMap />
                 </PrivateRoute>
               }
-            />*/}
+            />
             <Route path="/profile" element=
               {
                 <PrivateRoute>
