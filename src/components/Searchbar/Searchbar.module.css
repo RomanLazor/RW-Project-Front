@@ -107,3 +107,11 @@
 .result_text {
     font-family: "Comfortaa", sans-serif; 
 }
+
+.error {
+  margin-top: 15px;
+  margin-left: 10px;
+  color: #FF1C1C;
+  font-size: 14px;
+  font-family: "Comfortaa", sans-serif;
+}
