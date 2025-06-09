@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ProfilePage.module.css";
 import Header from "../../components/Header/Header";
 import {Link, useNavigate, useNavigation} from "react-router-dom";
